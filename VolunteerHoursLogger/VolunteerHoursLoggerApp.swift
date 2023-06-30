@@ -9,12 +9,16 @@ import SwiftUI
 
 @main
 struct VolunteerHoursLoggerApp: App {
-    let persistenceController = PersistenceController.shared
+    
+	@StateObject private var dataController = DataController()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            //ContentView()
+			hoursBrowser()
+				.environment(\.managedObjectContext, dataController.container.viewContext)
+			
+    
         }
     }
 }
