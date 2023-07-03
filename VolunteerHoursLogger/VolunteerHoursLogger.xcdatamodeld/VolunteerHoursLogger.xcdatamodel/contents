@@ -3,11 +3,17 @@
     <entity name="Activity" representedClassName="Activity" syncable="YES">
         <attribute name="activityDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="activityDuties" optional="YES" attributeType="String"/>
-        <attribute name="activityTotalHours" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="activityEnd" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="activityTotalHours" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="completedForm" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="eventLocation" optional="YES" attributeType="String"/>
-        <attribute name="hasCompletedForm" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="supervisorName" optional="YES" attributeType="String"/>
         <attribute name="supervisorSignature" optional="YES" attributeType="Transformable" valueTransformerName="UIIMageTransformer" customClassName="UIImage"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="activityDate"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
 </model>

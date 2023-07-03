@@ -26,8 +26,8 @@ struct hoursBrowser: View {
 	
 	
 	
-	var sum: Int16 {
-		activities.reduce(0) { $0 + $1.activityTotalHours }
+	var sum: Int {
+		Int(activities.reduce(0) { $0 + $1.activityTotalHours })
 	}
 	
 	
@@ -35,7 +35,9 @@ struct hoursBrowser: View {
 		
 		
 		ZStack{
+			
 			VStack{
+				
 				NavigationView {
 					
 					if activities.count == 0 {
@@ -62,82 +64,139 @@ struct hoursBrowser: View {
 								HoursForm()
 							}
 					} else {
-						List{
-							ForEach(activities) {activities in
+						VStack{
+							
+							if activities.count > 1 {
+								Divider()
+									.padding(.horizontal)
+								HStack{
+									Text("\(activities.count) entries")
+										.foregroundColor(.gray)
+										.padding([.horizontal])
+									Spacer()
+								}
 								
-								
-								
-								
-								NavigationLink{
-									
-									DetailView(activity: activities)
-										
-									
-								} label: {
-									HStack{
-										let location = activities.eventLocation
-										VStack(alignment: .leading){
-											
-											Text("\(formatDate(activities.activityDate!))")
-												.font(.title3)
-												.underline()
-											
-											Text("**Location of Activity:** \(location ?? "untitled")")
-												.font(.subheadline)
-												//.fontWeight(.semibold)
-												.multilineTextAlignment(.leading)
-												.foregroundColor(.secondary)
-											
-											Text("**Hours Volunteered**: \(activities.activityTotalHours)")
-												.font(.subheadline)
-												//.fontWeight(.semibold)
-												.multilineTextAlignment(.leading)
-												.foregroundColor(.secondary)
-											
-											
-												//Text(dateToString())
-											
-											
-										}
+							}
+							List{
+								Section {
+									VStack(alignment: .leading){
+										Text("Filter Activities:")
 										
 										
-										if (activities.supervisorSignature != nil) {
+										HStack{
+											
+											Button("All"){
+												
+											}
+											.buttonBorderShape(.capsule)
+											.buttonStyle(.borderedProminent)
+											
+											
+											Button("Un-Verified"){
+												
+											}
+											.buttonBorderShape(.capsule)
+											.buttonStyle(.borderedProminent)
+											
+											
+											Button("Verified"){
+												
+											}
+											.buttonBorderShape(.capsule)
+											.buttonStyle(.borderedProminent)
+											
+											
 											Spacer()
-											Image(systemName: "checkmark.seal.fill")
-												.foregroundColor(.green)
-												.frame(alignment: .trailing)
-												.scaleEffect(1.3)
-											
 											
 										}
+									}
+									
+								}
+								ForEach(activities) {activities in
+									
+									
+									
+									
+									NavigationLink{
 										
+										DetailView(activity: activities)
+										
+										
+									} label: {
+										HStack{
+											let location = activities.eventLocation
+											VStack(alignment: .leading){
+												
+												Text("\(formatDate(activities.activityDate!))")
+													.font(.title3)
+													.underline()
+												
+												Text("**Location of Activity:** \(location ?? "untitled")")
+													.font(.subheadline)
+													//.fontWeight(.semibold)
+													.multilineTextAlignment(.leading)
+													.foregroundColor(.secondary)
+												
+												if Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60))) == 0 {
+													Text("**Time Volunteered**: \(Int((activities.activityTotalHours*60)/60)) hours")
+														.font(.subheadline)
+														//.fontWeight(.semibold)
+														.multilineTextAlignment(.leading)
+														.foregroundColor(.secondary)
+												
+												}else{
+													Text("**Time Volunteered**: \(Int((activities.activityTotalHours*60)/60)) hours \(Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60)))) min")
+														.font(.subheadline)
+														//.fontWeight(.semibold)
+														.multilineTextAlignment(.leading)
+														.foregroundColor(.secondary)
+												}
+												
+												
+													//Text(dateToString())
+												
+												
+											}
+											
+											
+											if (activities.completedForm) {
+												Spacer()
+												Image(systemName: "checkmark.seal.fill")
+													.foregroundColor(.green)
+													.frame(alignment: .trailing)
+													.scaleEffect(1.3)
+												
+												
+											}
+											
+										}
+									}
+									
+									
+								}
+								.onDelete(perform: deleteActivities)
+								
+							}
+							
+							.navigationTitle("Logged Activities")
+							.toolbar {
+								ToolbarItem(placement: .navigationBarLeading) {
+									EditButton()
+								}
+								
+								
+								ToolbarItem(placement: .navigationBarTrailing) {
+									Button {
+										showingAddScreen.toggle()
+									} label: {
+										Label ("Log Hours", systemImage: "plus")
 									}
 								}
+							}
+							.sheet(isPresented: $showingAddScreen) {
+								HoursForm()
 								
-								
 							}
-							.onDelete(perform: deleteActivities)
-							
-						}
-						
-						.navigationTitle("Logged Activities")
-						.toolbar {
-							ToolbarItem(placement: .navigationBarLeading) {
-								EditButton()
-							}
-							
-							
-							ToolbarItem(placement: .navigationBarTrailing) {
-								Button {
-									showingAddScreen.toggle()
-								} label: {
-									Label ("Log Hours", systemImage: "plus")
-								}
-							}
-						}
-						.sheet(isPresented: $showingAddScreen) {
-							HoursForm()
-							
 						}
 						
 						
@@ -155,7 +214,7 @@ struct hoursBrowser: View {
 						
 						Text("You have completed approximately **^[\(sum) hour](inflect: true)** of volunteering")
 							.multilineTextAlignment(.center)
-							.foregroundColor(.black)
+					
 						
 						Divider()
 							.padding(.horizontal)
@@ -196,11 +255,13 @@ struct hoursBrowser: View {
 						
 						
 					}
-					
+					Divider()
+						.padding(.horizontal)
 				}
 				
 			}
 			.ignoresSafeArea(.keyboard)
+			
 		}
 		
 			

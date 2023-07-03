@@ -15,13 +15,14 @@ struct HoursForm: View {
 	
 	@State private var activityDate = Date()
 	@State private var activityDuties = ""
-	@State private var activityHours:Int = 1
+	@State private var activityHours:Double = 1
 	@State private var eventLocation = ""
 	@State private var superVisorName = ""
 	@State private var superVisorSignature:UIImage? = nil
 	@State private var hasCompletedForm:Bool = false
 	
-
+	@State private var activityMinutesStepper:Double = 0
+	@State private var activityHoursStepper:Int16 = 1
 	
 	var disableForm: Bool {
 		activityDuties.isEmpty || eventLocation.isEmpty || superVisorName.isEmpty //|| superVisorSignature == nil
@@ -33,7 +34,26 @@ struct HoursForm: View {
 			Form {
 				Section{
 					DatePicker("Date and Time of Activity", selection: $activityDate, in: ...Date())
-					Stepper("Amount of Hours Volunteering: ^[\(activityHours) Hour](inflect: true)", value: $activityHours, in: 1...24)
+					HStack{
+						Text("Time Volunteered:")
+						VStack(alignment: .trailing){
+							HStack{
+								Spacer()
+								Text("Hours: \(activityHoursStepper)")
+								Stepper("", value: $activityHoursStepper, in: 0...23)
+								Spacer()
+							}
+							
+							HStack{
+								Spacer()
+								Text("Minutes: \(Int(activityMinutesStepper))")
+								Stepper("", value: $activityMinutesStepper, in: 0...59)
+								Spacer()
+							}
+							
+						}
+					}
+					
 				} header: {
 					Text("date and time details")
 				} footer: {
@@ -51,6 +71,7 @@ struct HoursForm: View {
 					SignatureView(availableTabs: [.draw],
 								  onSave: { image in
 						self.superVisorSignature = image
+						hasCompletedForm.toggle()
 					}, onCancel: {
 						
 					})
@@ -73,17 +94,19 @@ struct HoursForm: View {
 					
 					Button {
 						
+						activityHours = Double(Double(activityHoursStepper) + activityMinutesStepper/60)
+						
 						let newActivity = Activity(context: moc)
 						
 						newActivity.id = UUID()
 						newActivity.activityDate = activityDate
 						newActivity.activityDuties = activityDuties
-						newActivity.activityTotalHours = Int16(activityHours)
+						newActivity.activityTotalHours = Double(activityHours)
 						newActivity.eventLocation = eventLocation
 						newActivity.supervisorSignature = superVisorSignature
 						newActivity.supervisorName = superVisorName
 						
-						newActivity.hasCompletedForm = hasCompletedForm
+						newActivity.completedForm = hasCompletedForm
 						
 					
 						

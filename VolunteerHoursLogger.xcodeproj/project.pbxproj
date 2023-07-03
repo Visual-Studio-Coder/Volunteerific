@@ -10,17 +10,18 @@
 		783744682A48C67500B6878E /* UIIMageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783744672A48C67500B6878E /* UIIMageTransformer.swift */; };
 		7837977B2A4AA5DB00132B2D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7837977A2A4AA5DA00132B2D /* DetailView.swift */; };
 		7837977F2A4CE13100132B2D /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7837977E2A4CE13100132B2D /* SplashScreen.swift */; };
+		787DE26F2A4F4EEB0005C0D6 /* SwiftUIDigitalSignature in Frameworks */ = {isa = PBXBuildFile; productRef = 787DE26E2A4F4EEB0005C0D6 /* SwiftUIDigitalSignature */; };
+		788C2F9A2A4F588B00A5EA0D /* VolunteerHoursLogger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78A028922A47D609005DECB7 /* VolunteerHoursLogger.xcdatamodeld */; };
 		78A028882A47D607005DECB7 /* VolunteerHoursLoggerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A028872A47D607005DECB7 /* VolunteerHoursLoggerApp.swift */; };
 		78A0288A2A47D607005DECB7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A028892A47D607005DECB7 /* ContentView.swift */; };
 		78A0288C2A47D609005DECB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A0288B2A47D609005DECB7 /* Assets.xcassets */; };
 		78A0288F2A47D609005DECB7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A0288E2A47D609005DECB7 /* Preview Assets.xcassets */; };
 		78A028912A47D609005DECB7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A028902A47D609005DECB7 /* Persistence.swift */; };
-		78A028942A47D609005DECB7 /* VolunteerHoursLogger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78A028922A47D609005DECB7 /* VolunteerHoursLogger.xcdatamodeld */; };
 		78A0289E2A47D60A005DECB7 /* VolunteerHoursLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A0289D2A47D60A005DECB7 /* VolunteerHoursLoggerTests.swift */; };
 		78A028A82A47D60A005DECB7 /* VolunteerHoursLoggerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A028A72A47D60A005DECB7 /* VolunteerHoursLoggerUITests.swift */; };
 		78A028AA2A47D60A005DECB7 /* VolunteerHoursLoggerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A028A92A47D60A005DECB7 /* VolunteerHoursLoggerUITestsLaunchTests.swift */; };
 		78A028B72A47D622005DECB7 /* HoursForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A028B62A47D622005DECB7 /* HoursForm.swift */; };
-		78FEAD052A47EEAD008901EC /* SwiftUIDigitalSignature in Frameworks */ = {isa = PBXBuildFile; productRef = 78FEAD042A47EEAD008901EC /* SwiftUIDigitalSignature */; };
+		78C973D72A523CC200C8BB67 /* SpreadsheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C973D62A523CC200C8BB67 /* SpreadsheetView.swift */; };
 		78FEAD072A480312008901EC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FEAD062A480312008901EC /* DataController.swift */; };
 		78FEAD092A4808FF008901EC /* hoursBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FEAD082A4808FF008901EC /* hoursBrowser.swift */; };
 		78FEAD0B2A480DA9008901EC /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FEAD0A2A480DA9008901EC /* Photo.swift */; };
@@ -60,6 +61,7 @@
 		78A028A72A47D60A005DECB7 /* VolunteerHoursLoggerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerHoursLoggerUITests.swift; sourceTree = "<group>"; };
 		78A028A92A47D60A005DECB7 /* VolunteerHoursLoggerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerHoursLoggerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		78A028B62A47D622005DECB7 /* HoursForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursForm.swift; sourceTree = "<group>"; };
+		78C973D62A523CC200C8BB67 /* SpreadsheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetView.swift; sourceTree = "<group>"; };
 		78FEAD062A480312008901EC /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		78FEAD082A4808FF008901EC /* hoursBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hoursBrowser.swift; sourceTree = "<group>"; };
 		78FEAD0A2A480DA9008901EC /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -70,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78FEAD052A47EEAD008901EC /* SwiftUIDigitalSignature in Frameworks */,
+				787DE26F2A4F4EEB0005C0D6 /* SwiftUIDigitalSignature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +122,7 @@
 				78FEAD0A2A480DA9008901EC /* Photo.swift */,
 				78A028872A47D607005DECB7 /* VolunteerHoursLoggerApp.swift */,
 				78A028892A47D607005DECB7 /* ContentView.swift */,
+				78C973D62A523CC200C8BB67 /* SpreadsheetView.swift */,
 				78A028B62A47D622005DECB7 /* HoursForm.swift */,
 				7837977A2A4AA5DA00132B2D /* DetailView.swift */,
 				78FEAD062A480312008901EC /* DataController.swift */,
@@ -173,7 +176,7 @@
 			);
 			name = VolunteerHoursLogger;
 			packageProductDependencies = (
-				78FEAD042A47EEAD008901EC /* SwiftUIDigitalSignature */,
+				787DE26E2A4F4EEB0005C0D6 /* SwiftUIDigitalSignature */,
 			);
 			productName = VolunteerHoursLogger;
 			productReference = 78A028842A47D607005DECB7 /* Volunteerific.app */;
@@ -248,7 +251,7 @@
 			);
 			mainGroup = 78A0287B2A47D607005DECB7;
 			packageReferences = (
-				78FEAD032A47EEAD008901EC /* XCRemoteSwiftPackageReference "swiftui-digital-signature" */,
+				787DE26D2A4F4EEB0005C0D6 /* XCRemoteSwiftPackageReference "swiftui-digital-signature" */,
 			);
 			productRefGroup = 78A028852A47D607005DECB7 /* Products */;
 			projectDirPath = "";
@@ -293,13 +296,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				78FEAD0B2A480DA9008901EC /* Photo.swift in Sources */,
+				788C2F9A2A4F588B00A5EA0D /* VolunteerHoursLogger.xcdatamodeld in Sources */,
 				78A028B72A47D622005DECB7 /* HoursForm.swift in Sources */,
 				78FEAD072A480312008901EC /* DataController.swift in Sources */,
 				7837977B2A4AA5DB00132B2D /* DetailView.swift in Sources */,
 				78A028912A47D609005DECB7 /* Persistence.swift in Sources */,
 				78A0288A2A47D607005DECB7 /* ContentView.swift in Sources */,
+				78C973D72A523CC200C8BB67 /* SpreadsheetView.swift in Sources */,
 				7837977F2A4CE13100132B2D /* SplashScreen.swift in Sources */,
-				78A028942A47D609005DECB7 /* VolunteerHoursLogger.xcdatamodeld in Sources */,
 				78A028882A47D607005DECB7 /* VolunteerHoursLoggerApp.swift in Sources */,
 				783744682A48C67500B6878E /* UIIMageTransformer.swift in Sources */,
 				78FEAD092A4808FF008901EC /* hoursBrowser.swift in Sources */,
@@ -389,7 +393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -443,7 +447,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -625,7 +629,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		78FEAD032A47EEAD008901EC /* XCRemoteSwiftPackageReference "swiftui-digital-signature" */ = {
+		787DE26D2A4F4EEB0005C0D6 /* XCRemoteSwiftPackageReference "swiftui-digital-signature" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/globulus/swiftui-digital-signature";
 			requirement = {
@@ -636,9 +640,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		78FEAD042A47EEAD008901EC /* SwiftUIDigitalSignature */ = {
+		787DE26E2A4F4EEB0005C0D6 /* SwiftUIDigitalSignature */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 78FEAD032A47EEAD008901EC /* XCRemoteSwiftPackageReference "swiftui-digital-signature" */;
+			package = 787DE26D2A4F4EEB0005C0D6 /* XCRemoteSwiftPackageReference "swiftui-digital-signature" */;
 			productName = SwiftUIDigitalSignature;
 		};
 /* End XCSwiftPackageProductDependency section */

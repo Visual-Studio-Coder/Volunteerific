@@ -13,6 +13,8 @@ class DataController:ObservableObject {
 			if let error = error{
 				print("Core Data failed to load: \(error.localizedDescription)")
 			}
+			
+			
 		}
 	}
 	
@@ -35,7 +37,7 @@ class DataController:ObservableObject {
 		supervisorName: String,
 		activityDate: Date,
 		activityDuties: String,
-		activityHours: Int16,
+		activityHours: Double,
 		eventLocation: String,
 		superVisorSignature: UIImage,
 		context: NSManagedObjectContext
@@ -47,10 +49,10 @@ class DataController:ObservableObject {
 		activity.supervisorName = supervisorName
 		activity.activityDate = activityDate
 		activity.activityDuties = activityDuties
-		activity.activityTotalHours = Int16(activityHours)
+		activity.activityTotalHours = Double(activityHours)
 		activity.eventLocation = eventLocation
 		activity.supervisorSignature = superVisorSignature
-		activity.hasCompletedForm = hasCompletedForm
+		activity.completedForm = hasCompletedForm 
 		
 		save(context: context)
 	}

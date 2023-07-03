@@ -15,7 +15,7 @@ struct VolunteerHoursLoggerApp: App {
     var body: some Scene {
         WindowGroup {
             //ContentView()
-			hoursBrowser()
+			ContentView()
 				.environment(\.managedObjectContext, dataController.container.viewContext)
 			
     
