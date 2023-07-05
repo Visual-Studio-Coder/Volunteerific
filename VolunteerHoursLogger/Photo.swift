@@ -27,6 +27,9 @@ class Activity: NSManagedObject {
 	@NSManaged public var supervisorSignature: UIImage?
 	@NSManaged public var completedForm: Bool
 	
+	
+	
+	
 }
 
 extension Activity : Identifiable {

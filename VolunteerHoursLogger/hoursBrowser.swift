@@ -16,6 +16,8 @@ struct hoursBrowser: View {
 		keyPath: \Activity.activityDate,
 		ascending: false)]) var activities: FetchedResults<Activity>
 	
+	
+	
 	@State private var showingAddScreen = false
 		// Create a Date object.
 	
@@ -79,102 +81,145 @@ struct hoursBrowser: View {
 							}
 							List{
 								Section {
-									VStack(alignment: .leading){
-										Text("Filter Activities:")
-										
-										
-										HStack{
-											
-											Button("All"){
+									ForEach(activities) {activities in
+										if !activities.completedForm {
+											NavigationLink{
 												
-											}
-											.buttonBorderShape(.capsule)
-											.buttonStyle(.borderedProminent)
-											
-											
-											Button("Un-Verified"){
+												DetailView(activity: activities)
 												
-											}
-											.buttonBorderShape(.capsule)
-											.buttonStyle(.borderedProminent)
-											
-											
-											Button("Verified"){
 												
-											}
-											.buttonBorderShape(.capsule)
-											.buttonStyle(.borderedProminent)
-											
-											
-											Spacer()
-											
-										}
-									}
-									
-								}
-								ForEach(activities) {activities in
-									
-									
-									
-									
-									NavigationLink{
-										
-										DetailView(activity: activities)
-										
-										
-									} label: {
-										HStack{
-											let location = activities.eventLocation
-											VStack(alignment: .leading){
-												
-												Text("\(formatDate(activities.activityDate!))")
-													.font(.title3)
-													.underline()
-												
-												Text("**Location of Activity:** \(location ?? "untitled")")
-													.font(.subheadline)
-													//.fontWeight(.semibold)
-													.multilineTextAlignment(.leading)
-													.foregroundColor(.secondary)
-												
-												if Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60))) == 0 {
-													Text("**Time Volunteered**: \(Int((activities.activityTotalHours*60)/60)) hours")
-														.font(.subheadline)
-														//.fontWeight(.semibold)
-														.multilineTextAlignment(.leading)
-														.foregroundColor(.secondary)
-												
-												}else{
-													Text("**Time Volunteered**: \(Int((activities.activityTotalHours*60)/60)) hours \(Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60)))) min")
-														.font(.subheadline)
-														//.fontWeight(.semibold)
-														.multilineTextAlignment(.leading)
-														.foregroundColor(.secondary)
+											} label: {
+												HStack{
+													let location = activities.eventLocation
+													VStack(alignment: .leading){
+														
+														Text("\(formatDate(activities.activityDate!))")
+															.font(.title3)
+															.underline()
+														
+														Text("**Location of Activity:** \(location ?? "untitled")")
+															.font(.subheadline)
+															//.fontWeight(.semibold)
+															.multilineTextAlignment(.leading)
+															.foregroundColor(.secondary)
+														
+														if Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60))) == 0 {
+															Text("**Time Volunteered**: \(Int((activities.activityTotalHours*60)/60)) hours")
+																.font(.subheadline)
+																//.fontWeight(.semibold)
+																.multilineTextAlignment(.leading)
+																.foregroundColor(.secondary)
+															
+														}else{
+															Text("**Time Volunteered**: \(Int((activities.activityTotalHours*60)/60)) hours \(Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60)))) min")
+																.font(.subheadline)
+																//.fontWeight(.semibold)
+																.multilineTextAlignment(.leading)
+																.foregroundColor(.secondary)
+														}
+														
+														
+															//Text(dateToString())
+														
+														
+													}
+													
+													
+													if (activities.completedForm) {
+														Spacer()
+														Image(systemName: "checkmark.seal.fill")
+															.foregroundColor(.green)
+															.frame(alignment: .trailing)
+															.scaleEffect(1.3)
+														
+														
+													}
+													
 												}
-												
-												
-													//Text(dateToString())
-												
-												
 											}
-											
-											
-											if (activities.completedForm) {
-												Spacer()
-												Image(systemName: "checkmark.seal.fill")
-													.foregroundColor(.green)
-													.frame(alignment: .trailing)
-													.scaleEffect(1.3)
-												
-												
-											}
-											
 										}
 									}
-									
-									
+								} header: {
+									Text("Unverified: \(activities.count)")
+								} footer: {
+									Text("The entries under \"unverified\" are activities that have not received a signature yet. You can still edit these activities until you receive a signature.")
 								}
-								.onDelete(perform: deleteActivities)
+								
+								
+								
+								
+								
+								
+								
+								Section {
+									ForEach(activities) {activities in
+										
+										
+										if activities.completedForm {
+											
+											NavigationLink{
+												
+												DetailView(activity: activities)
+												
+												
+											} label: {
+												HStack{
+													let location = activities.eventLocation
+													VStack(alignment: .leading){
+														
+														Text("\(formatDate(activities.activityDate!))")
+															.font(.title3)
+															.underline()
+														
+														Text("**Location of Activity:** \(location ?? "untitled")")
+															.font(.subheadline)
+															//.fontWeight(.semibold)
+															.multilineTextAlignment(.leading)
+															.foregroundColor(.secondary)
+														
+														if Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60))) == 0 {
+															Text("**Time Volunteered**: \(Int((activities.activityTotalHours*60)/60)) hours")
+																.font(.subheadline)
+																//.fontWeight(.semibold)
+																.multilineTextAlignment(.leading)
+																.foregroundColor(.secondary)
+															
+														}else{
+															Text("**Time Volunteered**: \(Int((activities.activityTotalHours*60)/60)) hours \(Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60)))) min")
+																.font(.subheadline)
+																//.fontWeight(.semibold)
+																.multilineTextAlignment(.leading)
+																.foregroundColor(.secondary)
+														}
+														
+														
+															//Text(dateToString())
+														
+														
+													}
+													
+													
+													if (activities.completedForm) {
+														Spacer()
+														Image(systemName: "checkmark.seal.fill")
+															.foregroundColor(.green)
+															.frame(alignment: .trailing)
+															.scaleEffect(1.3)
+														
+														
+													}
+													
+												}
+											}
+										}
+										
+									}
+									.onDelete(perform: deleteActivities)
+								} header: {
+									Text("Verified")
+								} footer: {
+									Text("The entries under \"verified\" are activities that have received a signature. These entries can not be edited.")
+								}
 								
 							}
 							

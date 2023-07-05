@@ -22,6 +22,7 @@
 		78A028AA2A47D60A005DECB7 /* VolunteerHoursLoggerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A028A92A47D60A005DECB7 /* VolunteerHoursLoggerUITestsLaunchTests.swift */; };
 		78A028B72A47D622005DECB7 /* HoursForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A028B62A47D622005DECB7 /* HoursForm.swift */; };
 		78C973D72A523CC200C8BB67 /* SpreadsheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C973D62A523CC200C8BB67 /* SpreadsheetView.swift */; };
+		78C973DD2A54E2FD00C8BB67 /* csvExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C973DC2A54E2FD00C8BB67 /* csvExporter.swift */; };
 		78FEAD072A480312008901EC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FEAD062A480312008901EC /* DataController.swift */; };
 		78FEAD092A4808FF008901EC /* hoursBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FEAD082A4808FF008901EC /* hoursBrowser.swift */; };
 		78FEAD0B2A480DA9008901EC /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FEAD0A2A480DA9008901EC /* Photo.swift */; };
@@ -62,6 +63,7 @@
 		78A028A92A47D60A005DECB7 /* VolunteerHoursLoggerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerHoursLoggerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		78A028B62A47D622005DECB7 /* HoursForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursForm.swift; sourceTree = "<group>"; };
 		78C973D62A523CC200C8BB67 /* SpreadsheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetView.swift; sourceTree = "<group>"; };
+		78C973DC2A54E2FD00C8BB67 /* csvExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = csvExporter.swift; sourceTree = "<group>"; };
 		78FEAD062A480312008901EC /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		78FEAD082A4808FF008901EC /* hoursBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hoursBrowser.swift; sourceTree = "<group>"; };
 		78FEAD0A2A480DA9008901EC /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				78A028872A47D607005DECB7 /* VolunteerHoursLoggerApp.swift */,
 				78A028892A47D607005DECB7 /* ContentView.swift */,
 				78C973D62A523CC200C8BB67 /* SpreadsheetView.swift */,
+				78C973DC2A54E2FD00C8BB67 /* csvExporter.swift */,
 				78A028B62A47D622005DECB7 /* HoursForm.swift */,
 				7837977A2A4AA5DA00132B2D /* DetailView.swift */,
 				78FEAD062A480312008901EC /* DataController.swift */,
@@ -298,6 +301,7 @@
 				78FEAD0B2A480DA9008901EC /* Photo.swift in Sources */,
 				788C2F9A2A4F588B00A5EA0D /* VolunteerHoursLogger.xcdatamodeld in Sources */,
 				78A028B72A47D622005DECB7 /* HoursForm.swift in Sources */,
+				78C973DD2A54E2FD00C8BB67 /* csvExporter.swift in Sources */,
 				78FEAD072A480312008901EC /* DataController.swift in Sources */,
 				7837977B2A4AA5DB00132B2D /* DetailView.swift in Sources */,
 				78A028912A47D609005DECB7 /* Persistence.swift in Sources */,

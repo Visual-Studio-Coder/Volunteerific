@@ -10,6 +10,10 @@ struct ContentView: View {
 					Image(systemName: "list.dash")
 					Text("Logged Activities")
 				}
+			
+			
+				
+			
 			SpreadsheetView()
 				.tabItem {
 					Image(systemName: "tablecells")
@@ -27,3 +31,4 @@ struct ContentView_Previews: PreviewProvider {
 		ContentView()
 	}
 }
+
