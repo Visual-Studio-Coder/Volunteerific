@@ -1,9 +1,9 @@
-//
-//  hoursBrowser.swift
-//  VolunteerHoursLogger
-//
-//  Created by Vaibhav Satishkumar on 6/24/23.
-//
+	//
+	//  hoursBrowser.swift
+	//  VolunteerHoursLogger
+	//
+	//  Created by Vaibhav Satishkumar on 6/24/23.
+	//
 
 import SwiftUI
 import CoreData
@@ -23,7 +23,7 @@ struct hoursBrowser: View {
 	
 	
 	@State public var hoursIsHidden = false
-		
+	
 	@State public var listIsHidden = true
 	
 	
@@ -33,7 +33,7 @@ struct hoursBrowser: View {
 	}
 	
 	
-    var body: some View {
+	var body: some View {
 		
 		
 		ZStack{
@@ -91,31 +91,45 @@ struct hoursBrowser: View {
 											} label: {
 												HStack{
 													let location = activities.eventLocation
-													VStack(alignment: .leading){
+													VStack(alignment: .leading, spacing: 3){
 														
 														Text("\(formatDate(activities.activityDate!))")
 															.font(.title3)
 															.underline()
-														
-														Text("**Location of Activity:** \(location ?? "untitled")")
-															.font(.subheadline)
-															//.fontWeight(.semibold)
-															.multilineTextAlignment(.leading)
-															.foregroundColor(.secondary)
-														
-														if Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60))) == 0 {
-															Text("**Time Volunteered**: \(Int((activities.activityTotalHours*60)/60)) hours")
+														HStack{
+															Image(systemName: "mappin.and.ellipse")
+																.foregroundColor(.secondary)
+															Text("\(location ?? "untitled")")
 																.font(.subheadline)
 																//.fontWeight(.semibold)
 																.multilineTextAlignment(.leading)
 																.foregroundColor(.secondary)
+															Spacer()
 															
+														}
+														if Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60))) == 0 {
+															HStack{
+																Image(systemName: "clock")
+																	.foregroundColor(.secondary)
+																Text("^[\(Int((activities.activityTotalHours*60)/60)) hour](inflect: true)")
+																	.font(.subheadline)
+																	//.fontWeight(.semibold)
+																	.multilineTextAlignment(.leading)
+																	.foregroundColor(.secondary)
+																Spacer()
+															}
 														}else{
-															Text("**Time Volunteered**: \(Int((activities.activityTotalHours*60)/60)) hours \(Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60)))) min")
-																.font(.subheadline)
-																//.fontWeight(.semibold)
-																.multilineTextAlignment(.leading)
-																.foregroundColor(.secondary)
+															HStack{
+																Image(systemName: "clock")
+																	.foregroundColor(.secondary)
+																Text("^[\(Int((activities.activityTotalHours*60)/60)) hour](inflect: true) ^[\(Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60)))) min](inflect: true)")
+																	.font(.subheadline)
+																	//.fontWeight(.semibold)
+																	.multilineTextAlignment(.leading)
+																	.foregroundColor(.secondary)
+																Spacer()
+																
+															}
 														}
 														
 														
@@ -140,7 +154,7 @@ struct hoursBrowser: View {
 										}
 									}
 								} header: {
-									Text("Unverified: \(activities.count)")
+									Text("Unverified")
 								} footer: {
 									Text("The entries under \"unverified\" are activities that have not received a signature yet. You can still edit these activities until you receive a signature.")
 								}
@@ -165,31 +179,45 @@ struct hoursBrowser: View {
 											} label: {
 												HStack{
 													let location = activities.eventLocation
-													VStack(alignment: .leading){
+													VStack(alignment: .leading, spacing: 3){
 														
 														Text("\(formatDate(activities.activityDate!))")
 															.font(.title3)
 															.underline()
-														
-														Text("**Location of Activity:** \(location ?? "untitled")")
-															.font(.subheadline)
-															//.fontWeight(.semibold)
-															.multilineTextAlignment(.leading)
-															.foregroundColor(.secondary)
-														
-														if Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60))) == 0 {
-															Text("**Time Volunteered**: \(Int((activities.activityTotalHours*60)/60)) hours")
+														HStack{
+															Image(systemName: "mappin.and.ellipse")
+																.foregroundColor(.secondary)
+															Text("\(location ?? "untitled")")
 																.font(.subheadline)
 																//.fontWeight(.semibold)
 																.multilineTextAlignment(.leading)
 																.foregroundColor(.secondary)
+															Spacer()
 															
+														}
+														if Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60))) == 0 {
+															HStack{
+																Image(systemName: "clock")
+																	.foregroundColor(.secondary)
+																Text("^[\(Int((activities.activityTotalHours*60)/60)) hour](inflect: true)")
+																	.font(.subheadline)
+																	//.fontWeight(.semibold)
+																	.multilineTextAlignment(.leading)
+																	.foregroundColor(.secondary)
+																Spacer()
+															}
 														}else{
-															Text("**Time Volunteered**: \(Int((activities.activityTotalHours*60)/60)) hours \(Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60)))) min")
-																.font(.subheadline)
-																//.fontWeight(.semibold)
-																.multilineTextAlignment(.leading)
-																.foregroundColor(.secondary)
+															HStack{
+																Image(systemName: "clock")
+																	.foregroundColor(.secondary)
+																Text("^[\(Int((activities.activityTotalHours*60)/60)) hour](inflect: true) ^[\(Int(((activities.activityTotalHours*60).truncatingRemainder(dividingBy: 60)))) min](inflect: true)")
+																	.font(.subheadline)
+																	//.fontWeight(.semibold)
+																	.multilineTextAlignment(.leading)
+																	.foregroundColor(.secondary)
+																Spacer()
+																
+															}
 														}
 														
 														
@@ -259,7 +287,7 @@ struct hoursBrowser: View {
 						
 						Text("You have completed approximately **^[\(sum) hour](inflect: true)** of volunteering")
 							.multilineTextAlignment(.center)
-					
+						
 						
 						Divider()
 							.padding(.horizontal)
@@ -309,10 +337,10 @@ struct hoursBrowser: View {
 			
 		}
 		
-			
-			
-
-    }
+		
+		
+		
+	}
 	func deleteActivities(at offsets: IndexSet){
 		for offset in offsets {
 			let activity = activities[offset]
@@ -332,9 +360,9 @@ struct hoursBrowser: View {
 }
 
 struct hoursBrowser_Previews: PreviewProvider {
-    static var previews: some View {
-        hoursBrowser()
-    }
+	static var previews: some View {
+		hoursBrowser()
+	}
 }
 
 
