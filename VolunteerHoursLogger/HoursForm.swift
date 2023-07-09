@@ -25,7 +25,7 @@ struct HoursForm: View {
 	@State private var activityHoursStepper:Int16 = 1
 	
 	var disableForm: Bool {
-		activityDuties.isEmpty || eventLocation.isEmpty || superVisorName.isEmpty //|| superVisorSignature == nil
+		eventLocation.isEmpty || superVisorName.isEmpty //|| superVisorSignature == nil
 		
 	}
 	
@@ -68,7 +68,7 @@ struct HoursForm: View {
 					TextField("Name of Supervisor", text: $superVisorName)
 						.textContentType(.name)
 					Text("Signature of Supervisor below:")
-					SignatureView(availableTabs: [.draw],
+					SignatureView(availableTabs: [.draw, .image],
 								  onSave: { image in
 						self.superVisorSignature = image
 						hasCompletedForm.toggle()

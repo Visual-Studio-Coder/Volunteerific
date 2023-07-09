@@ -99,7 +99,7 @@ struct DetailView: View {
 						.textContentType(.name)
 					Text("Signature of Supervisor below:")
 					if !hasCompletedForm{
-						SignatureView(availableTabs: [.draw],
+						SignatureView(availableTabs: [.draw, .image],
 									  onSave: { image in
 							self.superVisorSignature = image
 							hasCompletedForm1.toggle()

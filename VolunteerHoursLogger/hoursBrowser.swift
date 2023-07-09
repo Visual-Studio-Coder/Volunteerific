@@ -26,6 +26,8 @@ struct hoursBrowser: View {
 	
 	@State public var listIsHidden = true
 	
+	@State public var unverifiedCount = 0
+	
 	
 	
 	var sum: Int {
@@ -95,7 +97,7 @@ struct hoursBrowser: View {
 														
 														Text("\(formatDate(activities.activityDate!))")
 															.font(.title3)
-															.underline()
+															
 														HStack{
 															Image(systemName: "mappin.and.ellipse")
 																.foregroundColor(.secondary)
@@ -150,11 +152,36 @@ struct hoursBrowser: View {
 													}
 													
 												}
+												
 											}
+											.swipeActions(edge: .leading) {
+												Button{
+													let newActivity = Activity(context: moc)
+													
+													newActivity.id = UUID()
+													newActivity.activityDate = Date.now
+													newActivity.activityDuties = activities.activityDuties
+													newActivity.activityTotalHours = activities.activityTotalHours
+													newActivity.eventLocation = activities.eventLocation
+														//newActivity.supervisorSignature = activities.supervisorSignature
+													newActivity.supervisorName = activities.supervisorName
+													
+													newActivity.completedForm = false
+												} label: {
+													
+													Text("Duplicate")
+													
+												}
+												.tint(Color(UIColor.systemBlue))
+												
+											}
+											
 										}
+										
 									}
+									.onDelete(perform: deleteActivities)
 								} header: {
-									Text("Unverified")
+									Text("Unverified/Drafts")
 								} footer: {
 									Text("The entries under \"unverified\" are activities that have not received a signature yet. You can still edit these activities until you receive a signature.")
 								}
@@ -167,6 +194,7 @@ struct hoursBrowser: View {
 								
 								Section {
 									ForEach(activities) {activities in
+										
 										
 										
 										if activities.completedForm {
@@ -183,7 +211,8 @@ struct hoursBrowser: View {
 														
 														Text("\(formatDate(activities.activityDate!))")
 															.font(.title3)
-															.underline()
+														
+														
 														HStack{
 															Image(systemName: "mappin.and.ellipse")
 																.foregroundColor(.secondary)
@@ -225,7 +254,9 @@ struct hoursBrowser: View {
 														
 														
 													}
-													
+													.onAppear {
+														unverifiedCount = activities.completedForm.description.count
+													}
 													
 													if (activities.completedForm) {
 														Spacer()
@@ -236,6 +267,28 @@ struct hoursBrowser: View {
 														
 														
 													}
+													
+												}
+												.swipeActions(edge: .leading) {
+													Button{
+														let newActivity = Activity(context: moc)
+														
+														newActivity.id = UUID()
+														newActivity.activityDate = Date.now
+														newActivity.activityDuties = activities.activityDuties
+														newActivity.activityTotalHours = activities.activityTotalHours
+														newActivity.eventLocation = activities.eventLocation
+															//newActivity.supervisorSignature = activities.supervisorSignature
+														newActivity.supervisorName = activities.supervisorName
+														
+														newActivity.completedForm = false
+													} label: {
+														
+														Text("Duplicate")
+														
+														
+													}
+													.tint(Color(UIColor.systemBlue))
 													
 												}
 											}
