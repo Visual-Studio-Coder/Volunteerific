@@ -1,10 +1,3 @@
-//
-//  VolunteerHoursLoggerTests.swift
-//  VolunteerHoursLoggerTests
-//
-//  Created by Vaibhav Satishkumar on 6/24/23.
-//
-
 import XCTest
 @testable import VolunteerHoursLogger
 

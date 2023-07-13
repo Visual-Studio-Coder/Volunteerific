@@ -15,7 +15,6 @@ struct HoursForm: View {
 	@State private var activityHoursStepper: Int16 = 1
 	var disableForm: Bool {
 		eventLocation.isEmpty || superVisorName.isEmpty
-			// || superVisorSignature == nil
 	}
     var body: some View {
 		NavigationView {

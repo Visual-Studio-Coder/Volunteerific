@@ -1,10 +1,3 @@
-//
-//  VolunteerHoursLoggerUITests.swift
-//  VolunteerHoursLoggerUITests
-//
-//  Created by Vaibhav Satishkumar on 6/24/23.
-//
-
 import XCTest
 
 final class VolunteerHoursLoggerUITests: XCTestCase {
