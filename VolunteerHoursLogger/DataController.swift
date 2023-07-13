@@ -2,23 +2,16 @@ import CoreData
 import Foundation
 import UIKit
 
-class DataController:ObservableObject {
+class DataController: ObservableObject {
 	let container = NSPersistentContainer(name: "VolunteerHoursLogger")
-	
-	init(){
-		
+	init() {
 		ValueTransformer.setValueTransformer(UIImageTransformer(), forName: NSValueTransformerName("UIImageTranformer"))
-		
-		container.loadPersistentStores { description, error in
-			if let error = error{
+		container.loadPersistentStores { _, error in
+			if let error = error {
 				print("Core Data failed to load: \(error.localizedDescription)")
 			}
-			
-			
 		}
 	}
-	
-	
 	func save(context: NSManagedObjectContext) {
 		do {
 			try context.save()
@@ -29,8 +22,7 @@ class DataController:ObservableObject {
 			fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
 		}
 	}
-	
-	
+		// swiftlint:disable function_parameter_count
 	func editActivity(
 		activity: Activity,
 		hasCompletedForm: Bool,
@@ -40,21 +32,15 @@ class DataController:ObservableObject {
 		activityHours: Double,
 		eventLocation: String,
 		superVisorSignature: UIImage,
-		context: NSManagedObjectContext
-	
-	){
-	
-		
-		//activity.id = UUID()
-		activity.supervisorName = supervisorName
-		activity.activityDate = activityDate
-		activity.activityDuties = activityDuties
-		activity.activityTotalHours = Double(activityHours)
-		activity.eventLocation = eventLocation
-		activity.supervisorSignature = superVisorSignature
-		activity.completedForm = hasCompletedForm 
-		
-		save(context: context)
-	}
-	
+		context: NSManagedObjectContext) {
+			activity.supervisorName = supervisorName
+			activity.activityDate = activityDate
+			activity.activityDuties = activityDuties
+			activity.activityTotalHours = Double(activityHours)
+			activity.eventLocation = eventLocation
+			activity.supervisorSignature = superVisorSignature
+			activity.completedForm = hasCompletedForm
+			save(context: context)
+		}
+		// swiftlint:enable function_parameter_count
 }

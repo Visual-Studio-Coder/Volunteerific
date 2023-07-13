@@ -1,10 +1,3 @@
-//
-//  SpreadsheetView.swift
-//  VolunteerHoursLogger
-//
-//  Created by Vaibhav Satishkumar on 7/2/23.
-//
-
 import SwiftUI
 
 struct SpreadsheetView: View {

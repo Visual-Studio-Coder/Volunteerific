@@ -1,19 +1,14 @@
 import SwiftUI
 
 struct ContentView: View {
-	
 	var body: some View {
-		
-		TabView{
-			hoursBrowser()
+		TabView {
+			HoursBrowser()
 				.tabItem {
 					Image(systemName: "list.dash")
 					Text("Logged Activities")
 				}
-			
-			
-				
-			
+
 			SpreadsheetView()
 				.tabItem {
 					Image(systemName: "tablecells")
@@ -21,9 +16,6 @@ struct ContentView: View {
 				}
 		}
 	}
-	
-	
-	
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -31,4 +23,3 @@ struct ContentView_Previews: PreviewProvider {
 		ContentView()
 	}
 }
-

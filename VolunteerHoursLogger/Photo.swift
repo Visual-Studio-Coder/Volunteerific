@@ -1,23 +1,12 @@
-	//
-	//  Activity+CoreDataProperties.swift
-	//
-	//
-	//  Created by Vaibhav Satishkumar on 6/24/23.
-	//
-	//  This file was automatically generated and should not be edited.
-	//
-
 import Foundation
 import CoreData
 import UIKit
 
 @objc(Activity)
 class Activity: NSManagedObject {
-	
 	@nonobjc public class func fetchRequest() -> NSFetchRequest<Activity> {
 		return NSFetchRequest<Activity>(entityName: "Activity")
 	}
-	
 	@NSManaged public var activityDate: Date?
 	@NSManaged public var activityDuties: String?
 	@NSManaged public var activityTotalHours: Double
@@ -26,12 +15,7 @@ class Activity: NSManagedObject {
 	@NSManaged public var supervisorName: String?
 	@NSManaged public var supervisorSignature: UIImage?
 	@NSManaged public var completedForm: Bool
-	
-	
-	
-	
 }
 
-extension Activity : Identifiable {
-	
+extension Activity: Identifiable {
 }
